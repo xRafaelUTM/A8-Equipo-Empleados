@@ -18,7 +18,7 @@ class Program
                     EmpleadosAsalariados.pagoEmpleado();    //MUESTRA EL PAGO DEL EMPLEADO
 
                     Console.WriteLine("\nPresione ENTER");   //ESPERA ESPUESTA DEL USUARIO PARA TERMINAR
-                    Console.WriteLine("HOLA, como estas?"); 
+                    Console.WriteLine("NO LE MUEVAS BRO"); 
                     Console.ReadKey();
                 break;
 
