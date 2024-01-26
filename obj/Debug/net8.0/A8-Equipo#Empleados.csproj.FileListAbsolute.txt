@@ -1,0 +1,14 @@
+C:\Users\solis\Downloads\A8-Equipo#Empleados\bin\Debug\net8.0\A8-Equipo#Empleados.exe
+C:\Users\solis\Downloads\A8-Equipo#Empleados\bin\Debug\net8.0\A8-Equipo#Empleados.deps.json
+C:\Users\solis\Downloads\A8-Equipo#Empleados\bin\Debug\net8.0\A8-Equipo#Empleados.runtimeconfig.json
+C:\Users\solis\Downloads\A8-Equipo#Empleados\bin\Debug\net8.0\A8-Equipo#Empleados.dll
+C:\Users\solis\Downloads\A8-Equipo#Empleados\bin\Debug\net8.0\A8-Equipo#Empleados.pdb
+C:\Users\solis\Downloads\A8-Equipo#Empleados\obj\Debug\net8.0\A8-Equipo#Empleados.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\solis\Downloads\A8-Equipo#Empleados\obj\Debug\net8.0\A8-Equipo#Empleados.AssemblyInfoInputs.cache
+C:\Users\solis\Downloads\A8-Equipo#Empleados\obj\Debug\net8.0\A8-Equipo#Empleados.AssemblyInfo.cs
+C:\Users\solis\Downloads\A8-Equipo#Empleados\obj\Debug\net8.0\A8-Equipo#Empleados.csproj.CoreCompileInputs.cache
+C:\Users\solis\Downloads\A8-Equipo#Empleados\obj\Debug\net8.0\A8-Equipo#Empleados.dll
+C:\Users\solis\Downloads\A8-Equipo#Empleados\obj\Debug\net8.0\refint\A8-Equipo#Empleados.dll
+C:\Users\solis\Downloads\A8-Equipo#Empleados\obj\Debug\net8.0\A8-Equipo#Empleados.pdb
+C:\Users\solis\Downloads\A8-Equipo#Empleados\obj\Debug\net8.0\A8-Equipo#Empleados.genruntimeconfig.cache
+C:\Users\solis\Downloads\A8-Equipo#Empleados\obj\Debug\net8.0\ref\A8-Equipo#Empleados.dll
