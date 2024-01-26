@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        do  //INICIA EL PROGRAMA
+        do  //INICIA EL PROGRAMA 
         {
             Console.Clear();
             var empleado = new Empleado();
