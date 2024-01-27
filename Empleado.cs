@@ -56,9 +56,7 @@ class EmpleadosPorComisión : Empleado
 {  
      public double procesoPagoEmpleado(double venta, int comision)      
     {
-        double procen= comision/100;
-        
-        pago = venta*procen;
+        pago = (venta*comision)/100;
         return pago;
     }
     public new void pagoEmpleado()
