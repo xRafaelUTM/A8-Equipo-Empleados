@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/rafaelx/Documentos/A8-Equipo-Empleados/A8-Equipo#Empleados.csproj": {}
+    "C:\\Users\\j_ant\\OneDrive\\Documentos\\GitHub\\A8-Equipo-Empleados\\A8-Equipo#Empleados.csproj": {}
   },
   "projects": {
-    "/home/rafaelx/Documentos/A8-Equipo-Empleados/A8-Equipo#Empleados.csproj": {
+    "C:\\Users\\j_ant\\OneDrive\\Documentos\\GitHub\\A8-Equipo-Empleados\\A8-Equipo#Empleados.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rafaelx/Documentos/A8-Equipo-Empleados/A8-Equipo#Empleados.csproj",
+        "projectUniqueName": "C:\\Users\\j_ant\\OneDrive\\Documentos\\GitHub\\A8-Equipo-Empleados\\A8-Equipo#Empleados.csproj",
         "projectName": "A8-Equipo#Empleados",
-        "projectPath": "/home/rafaelx/Documentos/A8-Equipo-Empleados/A8-Equipo#Empleados.csproj",
-        "packagesPath": "/home/rafaelx/.nuget/packages/",
-        "outputPath": "/home/rafaelx/Documentos/A8-Equipo-Empleados/obj/",
+        "projectPath": "C:\\Users\\j_ant\\OneDrive\\Documentos\\GitHub\\A8-Equipo-Empleados\\A8-Equipo#Empleados.csproj",
+        "packagesPath": "C:\\Users\\j_ant\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\j_ant\\OneDrive\\Documentos\\GitHub\\A8-Equipo-Empleados\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/rafaelx/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\j_ant\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
