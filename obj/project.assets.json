@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\j_ant\\OneDrive\\Documentos\\GitHub\\A8-Equipo-Empleados\\A8-Equipo#Empleados.csproj",
+      "projectUniqueName": "C:\\Users\\j_ant\\Documentos\\GitHub\\A8-Equipo-Empleados\\A8-Equipo#Empleados.csproj",
       "projectName": "A8-Equipo#Empleados",
-      "projectPath": "C:\\Users\\j_ant\\OneDrive\\Documentos\\GitHub\\A8-Equipo-Empleados\\A8-Equipo#Empleados.csproj",
+      "projectPath": "C:\\Users\\j_ant\\Documentos\\GitHub\\A8-Equipo-Empleados\\A8-Equipo#Empleados.csproj",
       "packagesPath": "C:\\Users\\j_ant\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\j_ant\\OneDrive\\Documentos\\GitHub\\A8-Equipo-Empleados\\obj\\",
+      "outputPath": "C:\\Users\\j_ant\\Documentos\\GitHub\\A8-Equipo-Empleados\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\j_ant\\AppData\\Roaming\\NuGet\\NuGet.Config"
