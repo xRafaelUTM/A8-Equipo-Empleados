@@ -61,9 +61,9 @@ class EmpleadosPorComisión : Empleado
     }
     public new void pagoEmpleado()
     {
-        Console.WriteLine("Dame al cantida venta");
+        Console.WriteLine($"Ingrese la cantida de las ventas de el empleado{nombre} ");
         double venta = Convert.ToDouble(Console.ReadLine());
-        Console.WriteLine("Cantida de comision a recibir");
+        Console.WriteLine($"ingrese la cantida de comision a recibir de empleado {nombre}");
         int comision = Convert.ToInt32(Console.ReadLine());
 
         Console.WriteLine($"El sueldo de empredo es {procesoPagoEmpleado(venta,comision)}");
