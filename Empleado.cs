@@ -54,6 +54,22 @@ class EmpleadoPorHoras : Empleado
 
 class EmpleadosPorComisión : Empleado
 {  
+     public double procesoPagoEmpleado(double venta, int comision)      
+    {
+        double procen= comision/100;
+        
+        pago = venta*procen;
+        return pago;
+    }
+    public new void pagoEmpleado()
+    {
+        Console.WriteLine("Dame al cantida venta");
+        double venta = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Cantida de comision a recibir");
+        int comision = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine($"El sueldo de empredo es {procesoPagoEmpleado(venta,comision)}");
+    }
 }
 
 class EmpleadosAsalariadosPorComision : Empleado
