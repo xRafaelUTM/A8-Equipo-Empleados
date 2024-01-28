@@ -61,55 +61,73 @@ class EmpleadosPorComisión : Empleado
     }
     public new void pagoEmpleado()
     {
-        Console.WriteLine($"Ingrese la cantida de las ventas del empleado llamado {nombre} ");
-        double venta = Convert.ToDouble(Console.ReadLine());
         do
         {
-            Console.WriteLine($"Ingrese la cantida de comision a recibir del empleado llamado {nombre}");
-            int comision = Convert.ToInt32(Console.ReadLine());
-            if (comision <0 || comision > 100)
+            try
             {
-                Console.WriteLine("Comision no valida");
-            }
-            else
+                Console.WriteLine($"Ingrese la cantida del valor de las ventas generadas por el empleado {nombre}");
+                double venta = Convert.ToDouble(Console.ReadLine());
+                do
+                {
+                    Console.WriteLine($"Ingrese el porcentaje que recibiras de las ventas del empleado {nombre}");
+                    int comision = Convert.ToInt32(Console.ReadLine());
+                    if (comision <0 || comision > 100)
+                    {
+                        Console.WriteLine("Comision no valida");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"El sueldo del empledo {nombre} es {procesoPagoEmpleado(venta,comision)}");
+                        break;
+                    }
+                }while (true);break; 
+            } 
+            catch(Exception)
             {
-                Console.WriteLine($"El sueldo del empledo es {procesoPagoEmpleado(venta,comision)}");
-                break;
+            Console.WriteLine("Dato no valido\nIngrese todos los datos de nuevo");
             }
-        }while (true);         
+        }while (true);
     }
 }
 
 class EmpleadosAsalariadosPorComision : Empleado
 {  
      public double procesoPagoEmpleado(double sueldo,double venta, int comision)      
-    {
-        double salario = sueldo+(sueldo*.10);
+    {   double sal_mes = sueldo*30;
+        double salario = sal_mes+(sal_mes*.10);
         double ProcenV = (venta*comision)/100;
         double pago = salario + ProcenV;
         return pago;
     }
     public new void pagoEmpleado ()
-   {
-        Console.WriteLine($"Ingrese el sueldo base del empleado llamado {nombre}");
-        double sueldo = Convert.ToDouble(Console.ReadLine());
-        Console.WriteLine($"Ingrese la cantida de las ventas del empleado llamado {nombre} ");
-        double venta = Convert.ToDouble(Console.ReadLine());
+   {    
         do
         {
-            Console.WriteLine($"Ingrese la cantida de comision a recibir del empleado llamado {nombre}");
-            int comision = Convert.ToInt32(Console.ReadLine());
-            if (comision <0 || comision > 100)
+            try
             {
-                Console.WriteLine("Comision no valida");
+                Console.WriteLine($"Ingrese el valor del sueldo diario del empleado llamado {nombre}");
+                double sueldo = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine($"Ingrese la cantida del valor de las ventas generadas por el empleado {nombre} ");
+                double venta = Convert.ToDouble(Console.ReadLine());
+                do
+                {
+                    Console.WriteLine($"Ingrese el porcentaje que recibiras de las ventas del empleado {nombre}");
+                    int comision = Convert.ToInt32(Console.ReadLine());
+                    if (comision <0 || comision > 100)
+                    {
+                        Console.WriteLine("Comision no valida");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"El sueldo del empledo {nombre} es {procesoPagoEmpleado(sueldo,venta,comision)}");
+                        break;
+                    }
+                }while (true);break;
             }
-            else
+            catch(Exception)
             {
-                Console.WriteLine($"El sueldo del empledo es {procesoPagoEmpleado(sueldo,venta,comision)}");
-                break;
+                Console.WriteLine("Dato no valido\nIngrese todos los datos de nuevo");
             }
         }while (true);
    }
-   
-
 }
