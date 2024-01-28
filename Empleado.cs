@@ -61,15 +61,55 @@ class EmpleadosPorComisión : Empleado
     }
     public new void pagoEmpleado()
     {
-        Console.WriteLine($"Ingrese la cantida de las ventas de el empleado{nombre} ");
+        Console.WriteLine($"Ingrese la cantida de las ventas del empleado llamado {nombre} ");
         double venta = Convert.ToDouble(Console.ReadLine());
-        Console.WriteLine($"ingrese la cantida de comision a recibir de empleado {nombre}");
-        int comision = Convert.ToInt32(Console.ReadLine());
-
-        Console.WriteLine($"El sueldo de empredo es {procesoPagoEmpleado(venta,comision)}");
+        do
+        {
+            Console.WriteLine($"Ingrese la cantida de comision a recibir del empleado llamado {nombre}");
+            int comision = Convert.ToInt32(Console.ReadLine());
+            if (comision <0 || comision > 100)
+            {
+                Console.WriteLine("Comision no valida");
+            }
+            else
+            {
+                Console.WriteLine($"El sueldo del empledo es {procesoPagoEmpleado(venta,comision)}");
+                break;
+            }
+        }while (true);         
     }
 }
 
 class EmpleadosAsalariadosPorComision : Empleado
 {  
+     public double procesoPagoEmpleado(double sueldo,double venta, int comision)      
+    {
+        double salario = sueldo+(sueldo*.10);
+        double ProcenV = (venta*comision)/100;
+        double pago = salario + ProcenV;
+        return pago;
+    }
+    public new void pagoEmpleado ()
+   {
+        Console.WriteLine($"Ingrese el sueldo base del empleado llamado {nombre}");
+        double sueldo = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine($"Ingrese la cantida de las ventas del empleado llamado {nombre} ");
+        double venta = Convert.ToDouble(Console.ReadLine());
+        do
+        {
+            Console.WriteLine($"Ingrese la cantida de comision a recibir del empleado llamado {nombre}");
+            int comision = Convert.ToInt32(Console.ReadLine());
+            if (comision <0 || comision > 100)
+            {
+                Console.WriteLine("Comision no valida");
+            }
+            else
+            {
+                Console.WriteLine($"El sueldo del empledo es {procesoPagoEmpleado(sueldo,venta,comision)}");
+                break;
+            }
+        }while (true);
+   }
+   
+
 }
