@@ -93,7 +93,7 @@ class EmpleadosPorComisión : Empleado
 class EmpleadosAsalariadosPorComision : Empleado
 {  
      public double procesoPagoEmpleado(double sueldo,double venta, int comision)      
-    {   double sal_mes = sueldo*30;
+    {   double sal_mes = sueldo*7;
         double salario = sal_mes+(sal_mes*.10);
         double ProcenV = (venta*comision)/100;
         double pago = salario + ProcenV;
