@@ -1,11 +1,11 @@
 class Empleado     //CLASE PADRE EMPLEADO
 {
         //DATOS GENERALES
-    public string? Nombre = "Sin nombre";
-    public int Edad = 18;
-    public string? Pais = "México";
-    public string? TipoDeEmpleado = "Sin tipo de empleado";
-    public double Pago = 0;
+    private string? Nombre = "Sin nombre";
+    private int Edad = 18;
+    private string? Pais = "México";
+    private string? TipoDeEmpleado = "Sin tipo de empleado";
+    private double Pago = 0;
 
     public string? nombre {get =>Nombre; set =>Nombre=value;}
     public int edad {get =>Edad; set =>Edad=value;}
@@ -25,9 +25,21 @@ class Empleado     //CLASE PADRE EMPLEADO
     {
         Console.Write("Ingrese el nombre y apellido del empleado. --> ");
         nombre = Console.ReadLine();
-
+        
         Console.Write($"\nIngrese la edad del empleado llamado {nombre} --> ");
-        edad = Convert.ToInt32(Console.ReadLine());
+        do
+        {
+            try
+            {
+                edad = Convert.ToInt32(Console.ReadLine());
+                break;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Dato no válido, ingrese la edad correctamente --> ");
+            }
+        }while(true);  
+        
 
         Console.Write($"\nIngrese el país/ciudad de procedencia del empleado llamado {nombre} \n--> ");
         pais = Console.ReadLine();
@@ -60,7 +72,7 @@ class EmpleadosAsalariados : Empleado
                 Console.Clear();
                 Console.Write($"Ingresa el salario (pago diario) de esta semana para empleado de nombre {nombre} --> ");
                 double salarioSemanal = Convert.ToDouble(Console.ReadLine());
-                Console.Write($"El sueldo de esta semana para el trabajador llamado {nombre} es {procesoPagoEmpleado(salarioSemanal)}");
+                Console.Write($"El sueldo de esta semana para el trabajador llamado {nombre} es de {procesoPagoEmpleado(salarioSemanal)}");
                 break;
             }
             catch (Exception)
@@ -74,48 +86,52 @@ class EmpleadosAsalariados : Empleado
 
 class EmpleadoPorHoras : Empleado
 {
-    public double ProcesoPagoEmpleado(double horasTrabajadas,double sueldoPorHora, bool flag, double horasExtras)
+    public double ProcesoPagoEmpleado(double horasTrabajadas,double sueldoPorHora, bool flag, double PagohorasExtras)
     {
-        double pagoTotal = 0;
         if (flag == true)
         {
             double CantidadDeHorasExtras = horasTrabajadas - 40;
             horasTrabajadas = horasTrabajadas - CantidadDeHorasExtras;
-            pagoTotal = (horasTrabajadas * sueldoPorHora) + ( horasExtras * CantidadDeHorasExtras);
+            pago = (horasTrabajadas * sueldoPorHora) + ( PagohorasExtras * CantidadDeHorasExtras);
         }
         else
         {
-            pagoTotal = horasTrabajadas * sueldoPorHora;
+            pago = horasTrabajadas * sueldoPorHora;
         }
-        
-        Pago = pagoTotal;
-
-        return pagoTotal;
+        return pago;
     }
     public new void pagoEmpleado()
     {
         
         do
         {
-            bool flag = false;
-            double PagohorasExtras = 0;
-            Console.Write($"Ingrese el sueldo por hora para el empleado de nombre {nombre} --> ");
-            double sueldoPorHora = Convert.ToDouble(Console.ReadLine());
-
-            Console.Write("Ingrese la cantidad de horas laboradas del empleado --> ");
-            double horasTrabajadas = Convert.ToDouble(Console.ReadLine());
-
-            if (horasTrabajadas > 40)
+            try
             {
-               flag = true;
-               Console.Write($"El empleado {nombre} ha laboado mas de 40 horas.\n ¿Cual será su pago por cada hora extra? --> ");
-               PagohorasExtras = Convert.ToDouble(Console.ReadLine());
+                Console.Clear();
+                bool flag = false;
+                double PagohorasExtras = 0;
+                Console.Write($"Ingrese el sueldo por hora para el empleado de nombre {nombre} --> ");
+                double sueldoPorHora = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Ingrese la cantidad de horas laboradas del empleado --> ");
+                double horasTrabajadas = Convert.ToDouble(Console.ReadLine());
+
+                if (horasTrabajadas > 40)
+                {
+                flag = true;
+                Console.Write($"El empleado {nombre} ha laboado mas de 40 horas.\n¿Cual será su pago por cada hora extra? --> ");
+                PagohorasExtras = Convert.ToDouble(Console.ReadLine());
+                }
+
+                double pagoTotal = ProcesoPagoEmpleado(horasTrabajadas, sueldoPorHora, flag, PagohorasExtras);
+                Console.Write($"El sueldo de esta semana para el tabajador llamado {nombre} es de: {pagoTotal}");
+                break;
             }
-
-            double pagoTotal = ProcesoPagoEmpleado(horasTrabajadas, sueldoPorHora, flag, PagohorasExtras);
-            Console.Write($"El sueldo de esta semana para el tabajador llamado {nombre} es: {pagoTotal}");
-
-            
+            catch (Exception)
+            {
+                Console.WriteLine("Dato no válido, presione enter e intente de nuevo.");
+                Console.ReadKey();
+            }
         }while (true);   
     }
 
@@ -123,7 +139,7 @@ class EmpleadoPorHoras : Empleado
 
 class EmpleadosPorComisión : Empleado
 {  
-     public double procesoPagoEmpleado(double venta, int comision)      
+     public double procesoPagoEmpleado(double venta, double comision)      
     {
         pago = (venta*comision)/100;
         return pago;
@@ -134,26 +150,31 @@ class EmpleadosPorComisión : Empleado
         {
             try
             {
-                Console.WriteLine($"Ingrese la cantida del valor de las ventas generadas por el empleado {nombre}");
+                
+                Console.Clear();
+                Console.Write($"Ingrese la cantidad de valor de las ventas generadas por el empleado {nombre} --> ");
                 double venta = Convert.ToDouble(Console.ReadLine());
                 do
                 {
-                    Console.WriteLine($"Ingrese el porcentaje que recibiras de las ventas del empleado {nombre}");
-                    int comision = Convert.ToInt32(Console.ReadLine());
+                    Console.Write($"Ingrese el porcentaje que recibirá de las ventas generadas por el empleado empleado {nombre} --> ");
+                    double comision = Convert.ToDouble(Console.ReadLine());
                     if (comision <0 || comision > 100)
                     {
                         Console.WriteLine("Comision no valida");
                     }
                     else
                     {
-                        Console.WriteLine($"El sueldo del empledo {nombre} es {procesoPagoEmpleado(venta,comision)}");
+                        Console.WriteLine($"El empleado {nombre} vendió ${venta}, su comisión es del {comision}%.");
+                        Console.WriteLine($"El sueldo del empledo {nombre} es de {procesoPagoEmpleado(venta,comision)}");
                         break;
                     }
-                }while (true);break; 
+                }while (true);
+                break; 
             } 
             catch(Exception)
             {
-                Console.WriteLine("Dato no valido\nIngrese todos los datos de nuevo");
+                Console.WriteLine("Dato no válido, presione enter e intente de nuevo.");
+                Console.ReadKey();
             }
         }while (true);
     }
@@ -161,9 +182,9 @@ class EmpleadosPorComisión : Empleado
 
 class EmpleadosAsalariadosPorComision : Empleado
 {  
-     public double procesoPagoEmpleado(double sueldo,double venta, int comision)      
-    {   double sal_mes = sueldo*7;
-        double salario = sal_mes+(sal_mes*.10);
+     public double procesoPagoEmpleado(double sueldo,double venta, double comision)      
+    {   double sal_sem = sueldo*7;
+        double salario = sal_sem+(sal_sem*.10);
         double ProcenV = (venta*comision)/100;
         double pago = salario + ProcenV;
         return pago;
@@ -174,28 +195,32 @@ class EmpleadosAsalariadosPorComision : Empleado
         {
             try
             {
-                Console.WriteLine($"Ingrese el valor del sueldo diario del empleado llamado {nombre}");
+                Console.Clear();
+                Console.Write($"Ingrese el valor del sueldo diario del empleado llamado {nombre}: --> ");
                 double sueldo = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine($"Ingrese la cantida del valor de las ventas generadas por el empleado {nombre} ");
+                Console.Write($"Ingrese la cantidad del valor de las ventas generadas por el empleado {nombre}: -->  ");
                 double venta = Convert.ToDouble(Console.ReadLine());
                 do
                 {
-                    Console.WriteLine($"Ingrese el porcentaje que recibiras de las ventas del empleado {nombre}");
-                    int comision = Convert.ToInt32(Console.ReadLine());
+                    Console.Write($"Ingrese el porcentaje de venta que recibirá el empleado {nombre}: -->  ");
+                    double comision = Convert.ToDouble(Console.ReadLine());
                     if (comision <0 || comision > 100)
                     {
                         Console.WriteLine("Comision no valida");
                     }
                     else
                     {
-                        Console.WriteLine($"El sueldo del empledo {nombre} es {procesoPagoEmpleado(sueldo,venta,comision)}");
+                        Console.WriteLine($"\nEl empleado {nombre} vendió ${venta}, su comisión es del {comision}%\nAdicional a eso, su salario base es de {sueldo*7} semanal, por lo que su bonificación del 10% de su salario es de {(sueldo*7) * .10}.");
+                        Console.WriteLine($"\nEl sueldo del empledo {nombre} es {procesoPagoEmpleado(sueldo,venta,comision)}");
                         break;
                     }
-                }while (true);break;
+                } while (true);
+                break;
             }
             catch(Exception)
             {
-                Console.WriteLine("Dato no valido\nIngrese todos los datos de nuevo");
+                Console.WriteLine("Dato no válido, presione enter e intente de nuevo.");
+                Console.ReadKey();
             }
         }while (true);
    }
