@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\j_ant\\.nuget\\packages\\": {}
+    "C:\\Users\\solis\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\j_ant\\Documentos\\GitHub\\A8-Equipo-Empleados\\A8-Equipo#Empleados.csproj",
+      "projectUniqueName": "C:\\Users\\solis\\Downloads\\A8-Equipo#Empleados\\A8-Equipo#Empleados.csproj",
       "projectName": "A8-Equipo#Empleados",
-      "projectPath": "C:\\Users\\j_ant\\Documentos\\GitHub\\A8-Equipo-Empleados\\A8-Equipo#Empleados.csproj",
-      "packagesPath": "C:\\Users\\j_ant\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\j_ant\\Documentos\\GitHub\\A8-Equipo-Empleados\\obj\\",
+      "projectPath": "C:\\Users\\solis\\Downloads\\A8-Equipo#Empleados\\A8-Equipo#Empleados.csproj",
+      "packagesPath": "C:\\Users\\solis\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\solis\\Downloads\\A8-Equipo#Empleados\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\j_ant\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\solis\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

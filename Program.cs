@@ -64,7 +64,7 @@ class Program
             //MENU DE SALIDA  
             Console.Clear();    //LIMPIA PANTALLA
             string? opcion;
-            Console.Write("\n¿Desea agregar otro empleado?\n1. Si\n2. No\n--> ");
+            Console.Write("¿Desea agregar otro empleado?\n1. Si\n2. No\n--> ");
             do  //VERIFICADOR DE ERROR AL NO SER 1 O 2
             {
                 opcion = Console.ReadLine();

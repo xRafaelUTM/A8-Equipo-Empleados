@@ -17,7 +17,7 @@ class Empleado     //CLASE PADRE EMPLEADO
     
     public void tipoEmpleado()    //METODO QUE MUESTRA EL MENÚ DE LOS TIPOS DE EMPLEADOS
     {
-        Console.Write($"\nIngrese el tipo de empleado \n1. Empleados asalariados \n2. Empleados por horas \n3. Empleados por comisión \n4. Empleados asalariados por comisión. \n  [ELIJA UN NUMERO CORRESPONDIENTE]\n--> ");
+        Console.Write($"Ingrese el tipo de empleado \n1. Empleados asalariados \n2. Empleados por horas \n3. Empleados por comisión \n4. Empleados asalariados por comisión. \n  [ELIJA UN NUMERO CORRESPONDIENTE]\n--> ");
         tipoDeEmpleado = Console.ReadLine();
     }
 
@@ -47,9 +47,78 @@ class Empleado     //CLASE PADRE EMPLEADO
 
 class EmpleadosAsalariados : Empleado
 { 
+    public new double procesoPagoEmpleado( double salarioSemanal)
+    {
+        return salarioSemanal * 7; 
+    }
+    public new void pagoEmpleado()
+    {
+        do
+        {
+            try
+            {
+                Console.Clear();
+                Console.Write($"Ingresa el salario (pago diario) de esta semana para empleado de nombre {nombre} --> ");
+                double salarioSemanal = Convert.ToDouble(Console.ReadLine());
+                Console.Write($"El sueldo de esta semana para el trabajador llamado {nombre} es {procesoPagoEmpleado(salarioSemanal)}");
+                break;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Dato no válido, presione enter e intente de nuevo.");
+                Console.ReadKey();
+            }
+        }while(true);  
+    }
 }
+
 class EmpleadoPorHoras : Empleado
 {
+    public double ProcesoPagoEmpleado(double horasTrabajadas,double sueldoPorHora, bool flag, double horasExtras)
+    {
+        double pagoTotal = 0;
+        if (flag == true)
+        {
+            double CantidadDeHorasExtras = horasTrabajadas - 40;
+            horasTrabajadas = horasTrabajadas - CantidadDeHorasExtras;
+            pagoTotal = (horasTrabajadas * sueldoPorHora) + ( horasExtras * CantidadDeHorasExtras);
+        }
+        else
+        {
+            pagoTotal = horasTrabajadas * sueldoPorHora;
+        }
+        
+        Pago = pagoTotal;
+
+        return pagoTotal;
+    }
+    public new void pagoEmpleado()
+    {
+        
+        do
+        {
+            bool flag = false;
+            double PagohorasExtras = 0;
+            Console.Write($"Ingrese el sueldo por hora para el empleado de nombre {nombre} --> ");
+            double sueldoPorHora = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Ingrese la cantidad de horas laboradas del empleado --> ");
+            double horasTrabajadas = Convert.ToDouble(Console.ReadLine());
+
+            if (horasTrabajadas > 40)
+            {
+               flag = true;
+               Console.Write($"El empleado {nombre} ha laboado mas de 40 horas.\n ¿Cual será su pago por cada hora extra? --> ");
+               PagohorasExtras = Convert.ToDouble(Console.ReadLine());
+            }
+
+            double pagoTotal = ProcesoPagoEmpleado(horasTrabajadas, sueldoPorHora, flag, PagohorasExtras);
+            Console.Write($"El sueldo de esta semana para el tabajador llamado {nombre} es: {pagoTotal}");
+
+            
+        }while (true);   
+    }
+
 }
 
 class EmpleadosPorComisión : Empleado
@@ -84,7 +153,7 @@ class EmpleadosPorComisión : Empleado
             } 
             catch(Exception)
             {
-            Console.WriteLine("Dato no valido\nIngrese todos los datos de nuevo");
+                Console.WriteLine("Dato no valido\nIngrese todos los datos de nuevo");
             }
         }while (true);
     }
