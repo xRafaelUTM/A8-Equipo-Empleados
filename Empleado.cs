@@ -3,14 +3,18 @@ class Empleado     //CLASE PADRE EMPLEADO
         //DATOS GENERALES
     private string? Nombre = "Sin nombre";
     private int Edad = 18;
-    private string? Pais = "México";
     private string? TipoDeEmpleado = "Sin tipo de empleado";
+    private double Impuesto = 0;
+    private int Antiguedad = 0;
+    private double Vales = 0;
     private double Pago = 0;
 
     public string? nombre {get =>Nombre; set =>Nombre=value;}
     public int edad {get =>Edad; set =>Edad=value;}
-    public string? pais {get =>Pais; set =>Pais=value;}
     public string? tipoDeEmpleado {get =>TipoDeEmpleado; set =>TipoDeEmpleado=value;}
+    public double impuesto {get =>Impuesto; set =>Pago=Impuesto;}
+    public int antiguedad {get =>Antiguedad; set =>Pago=Antiguedad;}
+    public double vales {get =>Vales; set =>Pago=Vales;}
     public double pago {get =>Pago; set =>Pago=value;}
 
 
@@ -39,11 +43,31 @@ class Empleado     //CLASE PADRE EMPLEADO
                 Console.WriteLine("Dato no válido, ingrese la edad correctamente --> ");
             }
         }while(true);  
-        
 
-        Console.Write($"\nIngrese el país/ciudad de procedencia del empleado llamado {nombre} \n--> ");
-        pais = Console.ReadLine();
+        Console.Write($"\n¿Cuanto tiempo[años] lleva laborando el empleado llamado {nombre} en la empresa? --> ");
+        do
+        {
+            try
+            {
+                antiguedad = Convert.ToInt32(Console.ReadLine());
+                break;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Dato no válido, ingrese la edad correctamente --> ");
+            }
+        }while(true); 
 
+    }
+
+    public double VerificacionVales(double vales)      //METODO HECHO PARA SER HEREDADO Y VERIFICA SI EL EMPLEADO TENDRÁ VALES
+    {
+        return vales;
+    }
+
+    public double CalcularImpiestos(double impuesto)      //METODO HECHO PARA SER HEREDADO Y CALCULA LOS IMPUESTOS GENERADOS DEL EMPLEADO
+    {
+        return impuesto;
     }
 
     public double procesoPagoEmpleado(double sueldo)      //METODO HECHO PARA SER HEREDADO Y CALCULA EL PROCESO DE SU PAGO FINAL.
@@ -53,7 +77,12 @@ class Empleado     //CLASE PADRE EMPLEADO
 
     public void pagoEmpleado()      //METODO HECHO PARA SER HEREDADO Y MOSTRAR EL PAGO FINAL
     {  
-        Console.Write($"\nEl sueldo mensual del trabajador llamado {nombre} es de {procesoPagoEmpleado(Pago)}");
+        Console.WriteLine($"Empleado TIPO DE EMPLEADO: {nombre}");
+        Console.WriteLine($"Edad: {edad}");
+        Console.WriteLine($"Antigüedad: {antiguedad}");
+        Console.WriteLine($"Vales: [Aplica/No Aplica]: {VerificacionVales(vales)}");
+        Console.WriteLine($"Impuestos: {CalcularImpiestos(impuesto)}");
+        Console.WriteLine($"Sueldo mensual: {procesoPagoEmpleado(Pago)}");
     }
 }
 
