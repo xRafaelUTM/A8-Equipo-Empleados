@@ -12,13 +12,11 @@ class Empleado     //CLASE PADRE EMPLEADO
     public string? nombre {get =>Nombre; set =>Nombre=value;}
     public int edad {get =>Edad; set =>Edad=value;}
     public string? tipoDeEmpleado {get =>TipoDeEmpleado; set =>TipoDeEmpleado=value;}
-    public double impuesto {get =>Impuesto; set =>Pago=Impuesto;}
-    public int antiguedad {get =>Antiguedad; set =>Pago=Antiguedad;}
-    public double vales {get =>Vales; set =>Pago=Vales;}
+    public double impuesto {get =>Impuesto; set =>Impuesto=value;}
+    public int antiguedad {get =>Antiguedad; set =>Antiguedad=value;}
+    public double vales {get =>Vales; set =>Vales=value;}
     public double pago {get =>Pago; set =>Pago=value;}
 
-
-    
     public void tipoEmpleado()    //METODO QUE MUESTRA EL MENÚ DE LOS TIPOS DE EMPLEADOS
     {
         Console.Write($"Ingrese el tipo de empleado \n1. Empleados asalariados \n2. Empleados por horas \n3. Empleados por comisión \n4. Empleados asalariados por comisión. \n  [ELIJA UN NUMERO CORRESPONDIENTE]\n--> ");
@@ -65,12 +63,18 @@ class Empleado     //CLASE PADRE EMPLEADO
         return vales;
     }
 
-    public double CalcularImpiestos(double impuesto)      //METODO HECHO PARA SER HEREDADO Y CALCULA LOS IMPUESTOS GENERADOS DEL EMPLEADO
+    public double sueldoBruto(double pago, double vales)      //METODO HECHO PARA SER HEREDADO Y MUESTRA EL SUELDO BRUTO (SIN IMPUESTOS)
+    {
+        pago += vales;
+        return pago;
+    }
+    
+    public double CalcularImpuestos(double impuesto)      //METODO HECHO PARA SER HEREDADO Y CALCULA LOS IMPUESTOS GENERADOS DEL EMPLEADO
     {
         return impuesto;
     }
 
-    public double procesoPagoEmpleado(double sueldo)      //METODO HECHO PARA SER HEREDADO Y CALCULA EL PROCESO DE SU PAGO FINAL.
+    public double procesoPagoEmpleado(double pago)      //METODO HECHO PARA SER HEREDADO Y CALCULA EL PROCESO DE SU PAGO FINAL.
     {
         return pago;
     }
@@ -81,17 +85,74 @@ class Empleado     //CLASE PADRE EMPLEADO
         Console.WriteLine($"Edad: {edad}");
         Console.WriteLine($"Antigüedad: {antiguedad}");
         Console.WriteLine($"Vales: [Aplica/No Aplica]: {VerificacionVales(vales)}");
-        Console.WriteLine($"Impuestos: {CalcularImpiestos(impuesto)}");
-        Console.WriteLine($"Sueldo mensual: {procesoPagoEmpleado(Pago)}");
+        Console.WriteLine($"Impuestos: {CalcularImpuestos(impuesto)}");
+        Console.WriteLine($"Sueldo mensual: {procesoPagoEmpleado(pago)}");
     }
 }
 
 class EmpleadosAsalariados : Empleado
 { 
-    public new double procesoPagoEmpleado( double salarioSemanal)
+    public string? categoria = "A";
+    public double pagoDiario = 0;
+    public double valSueldoBruto = 0;
+    public string? VerificarCategoria(double antiguedad)
     {
-        return salarioSemanal * 7; 
+        if (antiguedad < 1) { categoria = "A [MENOS DE 1 AÑO][$0]"; } 
+        else if (antiguedad > 1 && antiguedad < 3) { categoria = "B [A PARTIR DE 1 AÑO][$500]"; } 
+        else if (antiguedad > 3 && antiguedad < 5) { categoria = "C [A PARTIR DE 3 AÑOS][$1000]"; }
+        else if (antiguedad > 5 && antiguedad < 10) { categoria = "D [A PARTIR DE 5 AÑOS][$1500]"; }
+        else { categoria = "E [A PARTIR DE 10 AÑOS][$2000]"; }  
+
+        return categoria;
     }
+
+    public double sueldoBruto(double salarioSemanal, double vales, string? categoria)
+    {
+        valSueldoBruto = (salarioSemanal * 7) + vales;
+
+        switch (categoria)
+        {
+            case "A":
+                valSueldoBruto =+ 0;
+            break;
+
+            case "B":
+                valSueldoBruto =+ 500;
+            break;
+
+            case "C":
+                valSueldoBruto =+ 1000;
+            break;
+
+            case "D":
+                valSueldoBruto =+ 1500;
+            break;
+
+            case "E":
+                valSueldoBruto =+ 2000;
+            break;
+        }
+        return valSueldoBruto;
+    }
+
+    public double CalcularImpuestos(double sueldoBruto, double impuesto)
+    {
+        impuesto /= 100;
+
+        impuesto = sueldoBruto * impuesto;
+
+        return impuesto;
+    }
+
+    public double procesoPagoEmpleado(double sueldoBruto, double impuesto)
+    {
+        impuesto /= 100;
+
+        pago =  sueldoBruto - (sueldoBruto * impuesto);
+
+        return pago;
+    }
+    
     public new void pagoEmpleado()
     {
         do
@@ -99,9 +160,25 @@ class EmpleadosAsalariados : Empleado
             try
             {
                 Console.Clear();
-                Console.Write($"Ingresa el salario (pago diario) de esta semana para empleado de nombre {nombre} --> ");
-                double salarioSemanal = Convert.ToDouble(Console.ReadLine());
-                Console.Write($"El sueldo de esta semana para el trabajador llamado {nombre} es de {procesoPagoEmpleado(salarioSemanal)}");
+                Console.Write($"Ingrese el salario (pago diario) de esta semana para empleado de nombre {nombre} --> ");
+                pagoDiario = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write($"Ingrese el valor de \"vales\" que se le otorgarán al empleado {nombre} \nEn caso de no otorgarle, ingrese 0  --> ");
+                vales = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write($"Ingrese el porcentaje[0 a 100] de impuestos que se le descontarán de su pago al empleado {nombre} --> ");
+                impuesto = Convert.ToDouble(Console.ReadLine());
+
+                Console.Clear();
+                Console.WriteLine($"Empleado asalariado: {nombre}");
+                Console.WriteLine($"Edad: {edad}");
+                Console.WriteLine($"Antigüedad: {antiguedad} años");
+                Console.WriteLine($"Categoria: {VerificarCategoria(antiguedad)}");
+                Console.WriteLine($"Vales: ${vales}");
+                Console.WriteLine($"Sueldo bruto: {sueldoBruto(pagoDiario, vales, VerificarCategoria(antiguedad))}");
+                Console.WriteLine($"Impuestos [{impuesto}%]: {CalcularImpuestos(valSueldoBruto, impuesto)}");
+                Console.WriteLine($"Sueldo mensual: {procesoPagoEmpleado(valSueldoBruto, impuesto)}");
+                
                 break;
             }
             catch (Exception)
