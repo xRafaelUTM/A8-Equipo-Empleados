@@ -245,9 +245,17 @@ class EmpleadoPorHoras : Empleado
 
 class EmpleadosPorComisión : Empleado
 {  
-     public double procesoPagoEmpleado(double venta, double comision)      
+    public double CalcularImpuestos(double impuesto,double venta, double comision )      //METODO HECHO PARA SER HEREDADO Y CALCULA LOS IMPUESTOS GENERADOS DEL EMPLEADO
     {
-        pago = (venta*comision)/100;
+        impuesto /= 100;
+        impuesto = ((venta*comision)/100) * impuesto;
+        return impuesto;
+    }
+     
+     public new double ProcesoPagoEmpleado (double venta, double comision,double impuesto)      
+    {
+        impuesto /= 100;
+        pago = ((venta*comision)/100)- (((venta*comision)/100)*impuesto);
         return pago;
     }
     public new void pagoEmpleado()
@@ -270,8 +278,13 @@ class EmpleadosPorComisión : Empleado
                     }
                     else
                     {
+                        Console.Write($"Ingrese el porcentaje[0 a 100] de impuestos que se le descontarán de su pago al empleado {nombre} --> ");
+                        impuesto = Convert.ToDouble(Console.ReadLine());
+                        
+                        Console.WriteLine($"Impuestos [{impuesto}%]: {CalcularImpuestos(impuesto,venta,comision)}");
                         Console.WriteLine($"El empleado {nombre} vendió ${venta}, su comisión es del {comision}%.");
-                        Console.WriteLine($"El sueldo del empledo {nombre} es de {procesoPagoEmpleado(venta,comision)}");
+                        Console.WriteLine($"El sueldo del empledo {nombre} es de {ProcesoPagoEmpleado(venta,comision,impuesto)}");
+                        
                         break;
                     }
                 }while (true);

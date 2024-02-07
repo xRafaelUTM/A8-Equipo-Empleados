@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\solis\\.nuget\\packages\\": {}
+    "C:\\Users\\Joseito\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\solis\\Downloads\\A8-Equipo#Empleados\\A8-Equipo#Empleados.csproj",
+      "projectUniqueName": "D:\\VISIT\\Documents\\GitHub\\A8-Equipo#Empleados.csproj",
       "projectName": "A8-Equipo#Empleados",
-      "projectPath": "C:\\Users\\solis\\Downloads\\A8-Equipo#Empleados\\A8-Equipo#Empleados.csproj",
-      "packagesPath": "C:\\Users\\solis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\solis\\Downloads\\A8-Equipo#Empleados\\obj\\",
+      "projectPath": "D:\\VISIT\\Documents\\GitHub\\A8-Equipo#Empleados.csproj",
+      "packagesPath": "C:\\Users\\Joseito\\.nuget\\packages\\",
+      "outputPath": "D:\\VISIT\\Documents\\GitHub\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\solis\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Joseito\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
