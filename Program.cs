@@ -52,6 +52,9 @@ class Program
                     Console.ReadKey();
                 break;
 
+                case "5": 
+                break;
+
 
                 default:
                     Console.WriteLine($"No existen esa clase de empleados.");
@@ -64,14 +67,19 @@ class Program
             //MENU DE SALIDA  
             Console.Clear();    //LIMPIA PANTALLA
             string? opcion;
-            Console.Write("¿Desea agregar otro empleado?\n1. Si\n2. No\n--> ");
-            do  //VERIFICADOR DE ERROR AL NO SER 1 O 2
+
+            if (empleado.tipoDeEmpleado != "5")
             {
-                opcion = Console.ReadLine();
-                if (opcion is "1" or "2"){break;}
-                else{Console.Write("\nOpción no valida, seleccione correctamente --> ");}
-            } while (true);
-            if (opcion is "2"){break;} //TERMINA EL PROGRAMA
+                Console.Write("¿Desea agregar otro empleado?\n1. Si\n2. No\n--> ");
+                do  //VERIFICADOR DE ERROR AL NO SER 1 O 2
+                {
+                    opcion = Console.ReadLine();
+                    if (opcion is "1" or "2"){break;}
+                    else{Console.Write("\nOpción no valida, seleccione correctamente --> ");}
+                } while (true);
+                if (opcion is "2"){break;} //TERMINA EL PROGRAMA
+            }
+            else {break;}
 
         } while (true);
     }
